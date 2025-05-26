@@ -13,3 +13,8 @@
 #FF9600
 #ff0000
 #EA2500
+
+Botón desplegable de Compra (icono de tienda)
+- Botón de carrito de compra (icono de carrito)
+- Botón de lista de pedidos (icono de bolsa de tiendas)
+

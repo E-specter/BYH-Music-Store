@@ -1,16 +1,33 @@
 /**
  * Archivo: main.js
- * Descripción: Contiene la lógica principal de la aplicación.
- * Funcionalidades:
- *   1. Manejo de la navegación en la sección "Nosotros"
- *   2. Menú móvil
- *   3. Scroll suave
- *   4. Funciones de autenticación
- *   5. Funciones de la tienda
+ * 
+ * Descripción: 
+ * Este archivo es el núcleo de la aplicación web de BYH, conteniendo la lógica principal
+ * que se ejecuta en todas las páginas. Maneja la interactividad del sitio, incluyendo
+ * navegación, autenticación y funcionalidades del carrito de compras.
+ * 
+ * Estructura del código:
+ * 1. Inicialización al cargar el DOM
+ * 2. Navegación en sección "Nosotros"
+ * 3. Menú móvil responsive
+ * 4. Scroll suave para navegación
+ * 5. Funciones de autenticación
+ * 6. Funciones del carrito de compras
+ * 7. Utilidades varias
+ * 
+ * Notas importantes:
+ * - Utiliza localStorage para persistencia del carrito
+ * - Implementa patrones de diseño como IIFE y event delegation
+ * - Sigue principios de accesibilidad web (a11y)
  */
 
-// 1. Manejo de la navegación en la sección "Nosotros"
+// Inicialización principal que se ejecuta cuando el DOM está completamente cargado
 document.addEventListener('DOMContentLoaded', () => {
+    // =============================================
+    // 1. Navegación en la sección "Nosotros"
+    // =============================================
+    // Controla la navegación por pestañas en la sección de "Nosotros"
+    // Permite alternar entre diferentes secciones de contenido (Misión, Visión, etc.)
     const nosotrosLinks = document.querySelectorAll('.nosotros-nav .nav-link');
     const contentSections = document.querySelectorAll('.content-section');
 
@@ -31,7 +48,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+        // =============================================
     // 2. Menú móvil
+    // =============================================
+    // Configuración del menú hamburguesa para dispositivos móviles
+    // Incluye animación del ícono y manejo de eventos táctiles
     const menuToggle = document.getElementById('menu-toggle');
     const navMenu = document.querySelector('.nav-menu');
 
@@ -64,7 +85,11 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Scroll suave para enlaces internos
+        // =============================================
+    // 3. Scroll suave
+    // =============================================
+    // Implementa scroll suave para todos los enlaces internos (#)
+    // Mejora la experiencia de usuario al navegar por secciones de la misma página
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -86,12 +111,22 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+// =============================================
 // 4. Funciones de autenticación
+// =============================================
+
 /**
- * Intenta autenticar a un usuario con correo y contraseña
+ * Autentica un usuario en el sistema
+ * 
  * @param {string} email - Correo electrónico del usuario
  * @param {string} password - Contraseña del usuario
- * @returns {Promise<Object>} Respuesta del servidor
+ * @returns {Promise<Object>} Objeto con la respuesta del servidor
+ * @throws {Error} Cuando hay un error de conexión
+ * 
+ * Ejemplo de uso:
+ * login('usuario@ejemplo.com', 'contraseña')
+ *   .then(response => console.log('Autenticación exitosa'))
+ *   .catch(error => console.error('Error de autenticación', error));
  */
 async function login(email, password) {
     try {
@@ -109,11 +144,20 @@ async function login(email, password) {
     }
 }
 
-// 5. Funciones de la tienda
+// =============================================
+// 5. Funciones del carrito de compras
+// =============================================
+
 /**
- * Agrega un producto al carrito
- * @param {string|number} productId - ID del producto a agregar
- */
+ * Agrega un producto al carrito de compras
+ * 
+ * @param {string|number} productId - ID único del producto a agregar
+ * 
+ * Almacena los IDs de los productos en el localStorage del navegador
+ * y actualiza la interfaz de usuario del carrito.
+ * 
+ * Nota: Los datos se guardan en formato JSON en localStorage
+ * bajo la clave 'cart'.
 function addToCart(productId) {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     cart.push(productId);
@@ -123,7 +167,12 @@ function addToCart(productId) {
 
 /**
  * Actualiza la interfaz de usuario del carrito
- */
+ * 
+ * Obtiene los productos del localStorage y actualiza el contador
+ * de productos en el ícono del carrito en la barra de navegación.
+ * 
+ * Se ejecuta automáticamente al cargar la página y después de
+ * cualquier modificación al carrito.
 function updateCartUI() {
     const cart = JSON.parse(localStorage.getItem('cart')) || [];
     const cartCount = document.querySelector('.cart-count');
@@ -132,10 +181,17 @@ function updateCartUI() {
     }
 }
 
+// =============================================
+// 6. Utilidades
+// =============================================
+
 /**
- * Formatea una fecha para mostrarla en el blog
- * @param {string|Date} date - Fecha a formatear
- * @returns {string} Fecha formateada
+ * Formatea una fecha en un formato legible para el blog
+ * 
+ * @param {string|Date} date - Fecha a formatear (puede ser string o objeto Date)
+ * @returns {string} Fecha formateada en formato local español
+ * 
+ * Ejemplo: "15 de enero de 2023"
  */
 function formatDate(date) {
     return new Date(date).toLocaleDateString('es-ES', {

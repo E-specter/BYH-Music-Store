@@ -183,7 +183,9 @@
 <body>
     <!-- Header se cargará aquí por load-components.js -->
     
-    <main class="order-container">
+    <main>
+      <div class="container">
+        <div class="order-container">
         <div class="order-header">
             <h1>¡Gracias por tu compra!</h1>
             <p>Tu pedido ha sido confirmado</p>
@@ -307,9 +309,9 @@
             // Actualizar dirección de envío si existe
             if (shippingData.address) {
                 const address = `${shippingData.firstName} ${shippingData.lastName}<br>
-                               ${shippingData.address}<br>
-                               ${shippingData.city}, ${shippingData.postalCode}<br>
-                               ${shippingData.country}`;
+                    ${shippingData.address}<br>
+                    ${shippingData.city}, ${shippingData.postalCode}<br>
+                    ${shippingData.country}`;
                 
                 document.getElementById('shipping-address').innerHTML = address;
                 document.getElementById('shipping-phone').textContent = `Teléfono: ${shippingData.phone || 'No especificado'}`;
