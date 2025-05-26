@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-tienda.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="../js/load-components.js" defer></script>
+</head>
+<body>
+  <div class="product-emergente active">
+    <div class="product-content">
+      <button class="close-emergente" title="Cerrar">
+        <i class="fas fa-times"></i>
+      </button>
+      
+      <div class="product-grid">
+        <div class="product-image-section">
+          <div class="product-image-container">
+            <img class="product-image" src="../assets/product1.jpg" alt="Producto 1">
+          </div>
+          <button class="btn-wishlist" id="addToWishlist" title="Agregar a lista de deseos">
+            <i class="fas fa-heart"></i>
+          </button>
+        </div>
+        
+        <div class="product-details">
+          <h2 class="product-title">Parche - Metallica Master of Puppets</h2>
+          <div class="product-meta">
+            <p class="product-price">S/. 25.00</p>
+            <div class="product-rating">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star-half-alt"></i>
+              <span>(4.5/5)</span>
+            </div>
+          </div>
+          
+          <div class="product-description">
+            <p>Parche oficial de Metallica del álbum Master of Puppets. Material de alta calidad, resistente al lavado. Tamaño: 10cm x 10cm.</p>
+          </div>
+          
+          <div class="product-options">
+            <div class="quantity-selector">
+              <label for="quantity">Cantidad:</label>
+              <div class="quantity-controls">
+                <button class="quantity-btn" onclick="updateQuantity(-1)">-</button>
+                <input type="number" id="quantity" value="1" min="1" max="10">
+                <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
+              </div>
+            </div>
+            
+            <div class="size-selector">
+              <label for="size">Tamaño:</label>
+              <select id="size">
+                <option value="10x10">10cm x 10cm</option>
+                <option value="15x15">15cm x 15cm</option>
+                <option value="20x20">20cm x 20cm</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="product-actions">
+            <button class="btn-primary" id="addToCart">
+              <i class="fas fa-shopping-cart"></i>
+              Agregar al carrito
+            </button>
+            <button class="btn-secondary" id="buyNow">
+              <i class="fas fa-bolt"></i>
+              Comprar ahora
+            </button>
+          </div>
+          
+          <div class="product-info">
+            <div class="info-item">
+              <i class="fas fa-truck"></i>
+              <span>Envío gratis en compras mayores a S/. 100</span>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-shield-alt"></i>
+              <span>Garantía de calidad</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts principales -->
+  <script src="../js/main.js"></script>
+  
+  <script>
+    // Cargar datos del producto desde sessionStorage
+    document.addEventListener('DOMContentLoaded', function() {
+      const productData = JSON.parse(sessionStorage.getItem('currentProduct') || '{}');
+      
+      // Si no hay datos del producto, redirigir a la tienda
+      if (!productData.id) {
+        window.location.href = 'tienda.html';
+        return;
+      }
+      
+      // Actualizar la página con los datos del producto
+      document.querySelector('.product-title').textContent = productData.name;
+      document.querySelector('.product-price').textContent = `S/. ${productData.price}`;
+      document.querySelector('.product-image').src = productData.image;
+      
+      // Manejar clic en Agregar al carrito
+      document.getElementById('addToCart').addEventListener('click', function() {
+        // Aquí podrías agregar el producto al carrito
+        // Por ahora, solo redirigimos de vuelta a la tienda
+        window.location.href = 'tienda.html';
+      });
+      
+      // Manejar clic en Comprar ahora
+      document.getElementById('buyNow').addEventListener('click', function() {
+        // Redirigir a la página de detalles de compra
+        window.location.href = 'detalles-compra.html';
+      });
+    });
+    
+    function updateQuantity(change) {
+      const quantityInput = document.getElementById('quantity');
+      let newValue = parseInt(quantityInput.value) + change;
+      if (newValue >= 1 && newValue <= 10) {
+        quantityInput.value = newValue;
+      }
+    }
+
+    document.querySelector('.close-emergente').addEventListener('click', function() {
+      window.location.href = 'tienda.html';
+    });
+    
+    // Cerrar con la tecla Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        window.location.href = 'tienda.html';
+      }
+    });
+  </script>
+  
+  <!-- Scripts principales -->
+  <script src="../js/main.js"></script>
+  <script src="../js/load-components.js"></script>
+</body>
+</html>

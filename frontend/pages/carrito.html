@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - BYH</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-tienda.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .cart-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .cart-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .cart-items {
+            margin-bottom: 2rem;
+        }
+        
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 1.5rem;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            background: white;
+        }
+        
+        .cart-item-image {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-right: 1.5rem;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-size: 1.1rem;
+            margin: 0 0 0.5rem 0;
+        }
+        
+        .cart-item-price {
+            font-weight: bold;
+            color: #333;
+            margin: 0.5rem 0;
+        }
+        
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            margin: 0.5rem 0;
+        }
+        
+        .quantity-btn {
+            background: #f0f0f0;
+            border: 1px solid #ddd;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        .quantity-input {
+            width: 50px;
+            height: 30px;
+            text-align: center;
+            margin: 0 0.5rem;
+            border: 1px solid #ddd;
+        }
+        
+        .remove-item {
+            color: #ff4444;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .cart-summary {
+            background: #f9f9f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin: 0.5rem 0;
+        }
+        
+        .summary-total {
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-top: 1px solid #ddd;
+            padding-top: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .checkout-btn {
+            display: block;
+            width: 100%;
+            padding: 1rem;
+            background: #25D366;
+            color: white;
+            text-align: center;
+            border: none;
+            border-radius: 4px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 3rem 0;
+        }
+        
+        .continue-shopping {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #25D366;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header se cargará aquí por load-components.js -->
+    
+    <main class="cart-container">
+        <div class="cart-header">
+            <h1>Tu Carrito de Compras</h1>
+            <p>Revisa tus productos antes de proceder al pago</p>
+        </div>
+        
+        <div class="cart-content">
+            <div class="cart-items">
+                <!-- Ejemplo de ítem en el carrito -->
+                <div class="cart-item">
+                    <img src="../assets/product1.jpg" alt="Producto" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <h3 class="cart-item-title">Parche - Metallica Master of Puppets</h3>
+                        <p class="cart-item-price">S/. 25.00</p>
+                        <div class="quantity-controls">
+                            <button class="quantity-btn" onclick="updateQuantity(this, -1)">-</button>
+                            <input type="number" class="quantity-input" value="1" min="1" max="10">
+                            <button class="quantity-btn" onclick="updateQuantity(this, 1)">+</button>
+                        </div>
+                    </div>
+                    <button class="remove-item" title="Eliminar">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+                
+                <!-- Puedes agregar más ítems aquí -->
+            </div>
+            
+            <div class="cart-summary">
+                <h3>Resumen de la compra</h3>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>S/. 25.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Envío</span>
+                    <span>S/. 10.00</span>
+                </div>
+                <div class="summary-row summary-total">
+                    <span>Total</span>
+                    <span>S/. 35.00</span>
+                </div>
+                <button class="checkout-btn">Proceder al pago</button>
+                <a href="tienda.html" class="continue-shopping">
+                    <i class="fas fa-arrow-left"></i> Seguir comprando
+                </a>
+            </div>
+        </div>
+    </main>
+    
+    <!-- Footer se cargará aquí por load-components.js -->
+    
+    <!-- Scripts principales -->
+    <script src="../js/main.js"></script>
+    <script src="../js/load-components.js"></script>
+    
+    <!--
+
+    <script>
+        // Función para actualizar la cantidad
+        function updateQuantity(button, change) {
+            const quantityInput = button.parentElement.querySelector('.quantity-input');
+            let newValue = parseInt(quantityInput.value) + change;
+            if (newValue >= 1 && newValue <= 10) {
+                quantityInput.value = newValue;
+                updateCartTotal();
+            }
+        }
+        
+        // Función para actualizar el total del carrito
+        function updateCartTotal() {
+            // Implementar lógica para actualizar totales
+        }
+        
+        // Event listeners para botones de eliminar
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+                this.closest('.cart-item').remove();
+                updateCartTotal();
+            });
+        });
+    </script>
+    
+    <!-- Scripts principales -->
+    <script src="../js/main.js"></script>
+    <script src="../js/load-components.js"></script>
+</body>
+</html>

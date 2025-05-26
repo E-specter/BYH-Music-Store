@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BYH - Iniciar Sesión</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/style-login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="login-container">
+        <!-- Encabezado con botón de volver y navegación -->
+        <div class="header-container">
+            <!-- Botón de regreso -->
+            <a href="tienda.html" class="back-button">
+                <i class="fas fa-arrow-left"></i>
+                <span>Volver a <img class="logo-inline" src="../assets/logo.png" alt="BYH - Store"></span>
+            </a>
+            <!-- Submenú de navegación -->
+            <nav class="auth-nav">
+                <ul>
+                    <li><a href="#" class="active" data-form="login-form">Iniciar Sesión</a></li>
+                    <li><a href="#" data-form="register-form">Crear Cuenta</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Contenedor principal -->
+        <div class="main-content">
+            <!-- Slider izquierdo -->
+            <div class="slider-section">
+                <div class="slider">
+                    <div class="slide">
+                        <img src="../assets/login-slider1.jpg" alt="Imagen 1">
+                        <p class="slide-text">"Descubre nuestra colección exclusiva de parches"</p>
+                    </div>
+                    <div class="slide">
+                        <img src="../assets/login-slider2.jpg" alt="Imagen 2">
+                        <p class="slide-text">"Personaliza tu estilo con nuestros diseños únicos"</p>
+                    </div>
+                    <div class="slide">
+                        <img src="../assets/login-slider3.jpg" alt="Imagen 3">
+                        <p class="slide-text">"Únete a nuestra comunidad de amantes de la moda"</p>
+                    </div>
+                    <!-- Botones de navegación -->
+                    <button class="slider-nav prev" aria-label="Anterior">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button class="slider-nav next" aria-label="Siguiente">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                    <!-- Puntos indicadores -->
+                    <div class="slider-dots">
+                        <button class="dot active" data-slide="0" aria-label="Ir a slide 1"></button>
+                        <button class="dot" data-slide="1" aria-label="Ir a slide 2"></button>
+                        <button class="dot" data-slide="2" aria-label="Ir a slide 3"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de formularios -->
+            <div class="form-section">
+                <!-- Formulario de inicio de sesión -->
+                <form id="login-form" class="auth-form active">
+                    <h2>Hola, ¡bienvenido de vuelta!</h2>
+                    <div class="form-group">
+                        <input type="email" id="login-email" required>
+                        <label for="login-email">Correo electrónico</label>
+                    </div>
+                    <div class="form-group password-group">
+                        <input type="password" id="login-password" required>
+                        <label for="login-password">Contraseña</label>
+                        <button type="button" class="toggle-password" aria-label="Mostrar contraseña">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <a href="#" class="forgot-password">¿Has olvidado tu contraseña?</a>
+                    </div>
+                    <div class="form-options">
+                        <label>
+                            <input type="checkbox"> Recordarme
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary">Iniciar Sesión</button>
+
+                    <!-- Separador -->
+                    <div class="separator">
+                        <span>o continúa con</span>
+                    </div>
+
+                    <!-- Botones de redes sociales -->
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </button>
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Facebook
+                        </button>
+                        <button type="button" class="social-btn microsoft">
+                            <i class="fab fa-microsoft"></i>
+                            Microsoft
+                        </button>
+                    </div>
+                </form>
+
+                <!-- Formulario de registro -->
+                <form id="register-form" class="auth-form">
+                    <h2>¡Únete con una cuenta!</h2>
+                    <div class="form-group">
+                        <input type="text" id="register-name" required>
+                        <label for="register-name">Nombre completo</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="register-email" required>
+                        <label for="register-email">Correo electrónico</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="register-password" required>
+                        <label for="register-password">Contraseña</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" id="register-confirm-password" required>
+                        <label for="register-confirm-password">Confirmar contraseña</label>
+                    </div>
+                    <div class="form-options">
+                        <label>
+                            <input type="checkbox" id="accept-terms" name="accept-terms" required> 
+                            Acepto la <a href="politicas-empresa.html#politica-privacidad" target="_blank" class="link">Política de Privacidad</a> y los 
+                            <a href="terminos-condiciones.html" target="_blank" class="link">Términos y Condiciones</a> *
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-primary">Crear Cuenta</button>
+
+                    <!-- Separador -->
+                    <div class="separator">
+                        <span>o regístrate con</span>
+                    </div>
+
+                    <!-- Botones de redes sociales -->
+                    <div class="social-buttons">
+                        <button type="button" class="social-btn google">
+                            <i class="fab fa-google"></i>
+                            Google
+                        </button>
+                        <button type="button" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Facebook
+                        </button>
+                        <button type="button" class="social-btn microsoft">
+                            <i class="fab fa-microsoft"></i>
+                            Microsoft
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts principales -->
+    <script src="../js/main.js"></script>
+    <script>
+        // Cambio entre formularios
+        document.querySelectorAll('.auth-nav a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                // Remover clase active de todos los enlaces
+                document.querySelectorAll('.auth-nav a').forEach(l => l.classList.remove('active'));
+                // Agregar clase active al enlace clickeado
+                this.classList.add('active');
+                
+                // Ocultar todos los formularios
+                document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
+                // Mostrar el formulario correspondiente
+                document.getElementById(this.dataset.form).classList.add('active');
+            });
+        });
+
+        // Slider interactivo
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let slideInterval;
+
+        function showSlide(index) {
+            slides.forEach(slide => slide.style.opacity = '0');
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[index].style.opacity = '1';
+            dots[index].classList.add('active');
+            currentSlide = index;
+        }
+
+        function nextSlide() {
+            showSlide((currentSlide + 1) % slides.length);
+        }
+
+        function prevSlide() {
+            showSlide((currentSlide - 1 + slides.length) % slides.length);
+        }
+
+        // Inicializar slider
+        slides.forEach((slide, index) => {
+            if (index === 0) slide.style.opacity = '1';
+            else slide.style.opacity = '0';
+        });
+
+        // Event listeners para los botones de navegación
+        document.querySelector('.slider-nav.next').addEventListener('click', () => {
+            nextSlide();
+            resetInterval();
+        });
+
+        document.querySelector('.slider-nav.prev').addEventListener('click', () => {
+            prevSlide();
+            resetInterval();
+        });
+
+        // Event listeners para los puntos indicadores
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                showSlide(index);
+                resetInterval();
+            });
+        });
+
+        // Función para reiniciar el intervalo
+        function resetInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(nextSlide, 5000);
+        }
+
+        // Iniciar el intervalo automático
+        slideInterval = setInterval(nextSlide, 5000);
+
+        // Pausar el slider cuando el mouse está sobre él
+        document.querySelector('.slider-section').addEventListener('mouseenter', () => {
+            clearInterval(slideInterval);
+        });
+
+        document.querySelector('.slider-section').addEventListener('mouseleave', () => {
+            slideInterval = setInterval(nextSlide, 5000);
+        });
+
+        // Mostrar/ocultar contraseña
+        const togglePassword = document.querySelector('.toggle-password');
+        const passwordInput = document.querySelector('#login-password');
+        
+        if (togglePassword && passwordInput) {
+            togglePassword.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                this.querySelector('i').classList.toggle('fa-eye');
+                this.querySelector('i').classList.toggle('fa-eye-slash');
+                
+                // Cambiar el atributo aria-label según el estado
+                const isVisible = type === 'text';
+                this.setAttribute('aria-label', isVisible ? 'Ocultar contraseña' : 'Mostrar contraseña');
+            });
+        }
+    </script>
+</body>
+</html>
