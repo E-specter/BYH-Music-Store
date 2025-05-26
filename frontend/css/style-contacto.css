@@ -43,6 +43,30 @@ body {
     margin-bottom: 20px;
 }
 
+/* Campos de empresa (inicialmente ocultos) */
+.empresa-fields {
+    display: none;
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+}
+
+/* Mostrar campos de empresa cuando sean necesarios */
+.empresa-fields.visible {
+    display: block;
+}
+
+/* Asegurar que los campos de empresa tengan el mismo estilo que otros campos */
+.empresa-fields .form-group {
+    margin-bottom: 15px;
+}
+
+.empresa-fields .form-group:last-child {
+    margin-bottom: 0;
+}
+
 .form-group label {
     display: block;
     margin-bottom: 8px;
