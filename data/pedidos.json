@@ -1,12 +1,54 @@
 [
   {
     "id": 1,
+    "cliente": "Ana López",
+    "fecha": "2025-06-10",
+    "total": 1500.00,
+    "estado": "Entregado"
+  },
+  {
+    "id": 2,
+    "cliente": "Carlos Ruiz",
+    "fecha": "2025-06-12",
+    "total": 950.00,
+    "estado": "Pendiente"
+  },
+  {
+    "id": 3,
+    "cliente": "Marta García",
+    "fecha": "2025-06-18",
+    "total": 550.00,
+    "estado": "Cancelado"
+  },
+  {
+    "id": 1,
     "# pedido": "000001",
     "cliente": "Ana Lopez",
     "fecha": "22/12/2022",
     "total": 250.00,
     "estado": "pendiente",
     "acciones": [
+  {
+    "id": 1,
+    "cliente": "Ana López",
+    "fecha": "2025-06-10",
+    "total": 1500.00,
+    "estado": "Entregado"
+  },
+  {
+    "id": 2,
+    "cliente": "Carlos Ruiz",
+    "fecha": "2025-06-12",
+    "total": 950.00,
+    "estado": "Pendiente"
+  },
+  {
+    "id": 3,
+    "cliente": "Marta García",
+    "fecha": "2025-06-18",
+    "total": 550.00,
+    "estado": "Cancelado"
+  },
       {"nombre": "Ver", "enlace": "#"},
       {"nombre": "Editar", "enlace": "#"},
       {"nombre": "Eliminar", "enlace": "#"}
@@ -20,6 +62,27 @@
     "total": 250.00,
     "estado": "pendiente",
     "acciones": [
+  {
+    "id": 1,
+    "cliente": "Ana López",
+    "fecha": "2025-06-10",
+    "total": 1500.00,
+    "estado": "Entregado"
+  },
+  {
+    "id": 2,
+    "cliente": "Carlos Ruiz",
+    "fecha": "2025-06-12",
+    "total": 950.00,
+    "estado": "Pendiente"
+  },
+  {
+    "id": 3,
+    "cliente": "Marta García",
+    "fecha": "2025-06-18",
+    "total": 550.00,
+    "estado": "Cancelado"
+  },
       {"nombre": "Ver", "enlace": "#"},
       {"nombre": "Editar", "enlace": "#"},
       {"nombre": "Eliminar", "enlace": "#"}

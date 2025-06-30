@@ -183,61 +183,12 @@ export class DashboardView {
 
 export default DashboardView;
 
-
-// Clase para manejar la vista del Dashboard
-export class DashboardView {
-  constructor() {
-    this.title = "Dashboard";
-    this.stats = null;
-    this.recentSales = [];
-    this.topProducts = [];
-    this.templateUrl = "/pages/dashboard.html";
-  }
-
-  /**
-   * Carga la vista del dashboard
-   */
-  async load(params = {}) {
-    const contentArea =
-      document.getElementById("contentArea") ||
-      document.querySelector(".content");
-    if (!contentArea) {
-      console.error("No se encontró el área de contenido");
-      return;
-    }
-
-    try {
-      // Cargar los datos del dashboard
-      await this.loadData();
-
-      // Cargar el template HTML
-      const response = await fetch(this.templateUrl);
-      if (!response.ok) {
-        throw new Error(`Error al cargar la vista: ${response.status}`);
-      }
-
-      contentArea.innerHTML = await response.text();
-
-      // Actualizar el título de la página
-      document.title = "Dashboard | BYH Music Admin";
-
-      // Inicializar el dashboard
-      this.initializeDashboard();
-    } catch (error) {
-      console.error("Error al cargar el dashboard:", error);
-      contentArea.innerHTML = `
-                <div class="alert alert-danger">
-                    <h4>Error al cargar el panel de control</h4>
-                    <p>${
-                      error.message ||
                       "No se pudo cargar el panel de control. Por favor, intente nuevamente."
+            `;
                     }</p>
                     <button class="btn btn-primary" onclick="window.app.loadView('dashboard')">Reintentar</button>
                 </div>
             `;
-    }
-  }
-
   /**
    * Carga los datos del dashboard
    */

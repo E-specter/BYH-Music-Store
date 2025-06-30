@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "titulo": "Descuento 10% en Guitarras",
+    "descripcion": "Aprovecha un 10% de descuento en todas las guitarras eléctricas.",
+    "imagen": "./img/default-promo.svg",
+    "fecha_fin": "2025-07-31",
+    "activa": true
+  },
+  {
+    "id": 2,
+    "titulo": "Envío Gratis en Pedidos > $500",
+    "descripcion": "Obtén envío gratis en compras superiores a $500.",
+    "imagen": "./img/default-promo.svg",
+    "fecha_fin": "2025-08-15",
+    "activa": true
+  },
+  {
+    "id": 3,
+    "titulo": "Combo Batería + Platillos",
+    "descripcion": "Llévate un set de platillos con la compra de una batería acústica.",
+    "imagen": "./img/default-promo.svg",
+    "fecha_fin": "2025-07-20",
+    "activa": false
+  }
+]

@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "nombre": "Ana López",
+    "email": "ana.lopez@email.com",
+    "telefono": "987654321",
+    "fecha_registro": "2025-06-01",
+    "estado": "Activo"
+  },
+  {
+    "id": 2,
+    "nombre": "Carlos Ruiz",
+    "email": "carlos.ruiz@email.com",
+    "telefono": "912345678",
+    "fecha_registro": "2025-06-15",
+    "estado": "Activo"
+  },
+  {
+    "id": 3,
+    "nombre": "Marta García",
+    "email": "marta.garcia@email.com",
+    "telefono": "923456789",
+    "fecha_registro": "2025-06-20",
+    "estado": "Inactivo"
+  }
+]

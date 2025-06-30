@@ -3,6 +3,30 @@
  */
 export class PromocionesView {
     render() {
+        let cards = '';
+        if (!this.promociones || this.promociones.length === 0) {
+            cards = `<div class='col-12 text-center my-5'><i class='fas fa-bullhorn fa-3x text-muted mb-3'></i><h5>No hay promociones registradas</h5><p class='text-muted'>Comienza creando tu primera promoción</p></div>`;
+        } else {
+            cards = this.promociones.map(promo => `
+                <div class='col-md-4 mb-4'>
+                    <div class='card h-100'>
+                        <img src='${promo.imagen || './img/default-promo.svg'}' class='card-img-top' alt='Promoción'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>${promo.titulo}</h5>
+                            <p class='card-text'>${promo.descripcion}</p>
+                            <p class='card-text'><small class='text-muted'>Válido hasta: ${promo.fecha_fin || ''}</small></p>
+                            <div class='d-flex justify-content-between'>
+                                <span class='badge ${promo.activa ? 'bg-success' : 'bg-secondary'}'>${promo.activa ? 'Activa' : 'Inactiva'}</span>
+                                <div>
+                                    <button class='btn btn-sm btn-outline-primary me-1'><i class='fas fa-edit'></i></button>
+                                    <button class='btn btn-sm btn-outline-danger'><i class='fas fa-trash'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
         return `
             <div class="d-flex justify-content-between align-items-center mb-4">
                 <div>
@@ -50,7 +74,14 @@ export class PromocionesView {
     }
 
     async loadData() {
-        // Simular carga de datos
+        try {
+            const response = await fetch('data/promociones.json');
+            if (!response.ok) throw new Error('No se pudo cargar promociones');
+            this.promociones = await response.json();
+        } catch (error) {
+            this.promociones = [];
+            console.error('Error al cargar promociones:', error);
+        }
     }
 }
 

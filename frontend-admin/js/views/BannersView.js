@@ -8,23 +8,73 @@ export class BannersView {
         this.banners = [];
     }
 
-    async render() {
-        // Cargar el contenido HTML desde el archivo
+    async loadData() {
         try {
-            const response = await fetch('pages/banners.html');
-            if (!response.ok) {
-                throw new Error('No se pudo cargar la vista de banners');
-            }
-            return await response.text();
+            const response = await fetch('data/banners.json');
+            if (!response.ok) throw new Error('No se pudo cargar banners');
+            this.banners = await response.json();
         } catch (error) {
-            console.error('Error al cargar la vista de banners:', error);
-            return `
-                <div class="alert alert-danger" role="alert">
-                    <i class="fas fa-exclamation-triangle me-2"></i>
-                    Error al cargar la vista de banners. Por favor, recarga la página.
-                </div>
-            `;
+            this.banners = [];
+            console.error('Error al cargar banners:', error);
         }
+    }
+
+    async render() {
+        let cards = '';
+        if (!this.banners || this.banners.length === 0) {
+            cards = `<div class='col-12 text-center my-5'><i class='fas fa-image fa-3x text-muted mb-3'></i><h5>No hay banners registrados</h5><p class='text-muted'>Comienza creando tu primer banner</p></div>`;
+        } else {
+            cards = this.banners.map(banner => `
+                <div class='col-md-4 mb-4'>
+                    <div class='card h-100'>
+                        <img src='${banner.imagen || './img/default-banner.svg'}' class='card-img-top' alt='Banner'>
+                        <div class='card-body'>
+                            <h5 class='card-title'>${banner.titulo}</h5>
+                            <p class='card-text'>${banner.descripcion || ''}</p>
+                            <p class='card-text'><small class='text-muted'>Posición: ${banner.posicion || ''}</small></p>
+                            <div class='d-flex justify-content-between'>
+                                <span class='badge ${banner.activo ? 'bg-success' : 'bg-secondary'}'>${banner.activo ? 'Activo' : 'Inactivo'}</span>
+                                <div>
+                                    <button class='btn btn-sm btn-outline-primary me-1'><i class='fas fa-edit'></i></button>
+                                    <button class='btn btn-sm btn-outline-danger'><i class='fas fa-trash'></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+        return `
+            <div class=\"d-flex justify-content-between align-items-center mb-4\">
+                <div>
+                    <h1>Banners</h1>
+                    <p class=\"mb-0\">Administra los banners de la tienda</p>
+                </div>
+                <a href=\"#nuevo-banner\" class=\"btn btn-primary\" id=\"nuevoBannerBtn\">
+                    <i class=\"fas fa-plus\"></i> Nuevo Banner
+                </a>
+            </div>
+            <div class=\"card\">
+                <div class=\"card-body\">
+                    <div class=\"row\" id=\"bannersContainer\">
+                        ${cards}
+                    </div>
+                </div>
+                <!-- Paginación -->
+                <nav aria-label=\"Page navigation\">
+                    <ul class=\"pagination justify-content-center\">
+                        <li class=\"page-item disabled\">
+                            <a class=\"page-link\" href=\"#\" tabindex=\"-1\" aria-disabled=\"true\">Anterior</a>
+                        </li>
+                        <li class=\"page-item active\"><a class=\"page-link\" href=\"#\">1</a></li>
+                        <li class=\"page-item\"><a class=\"page-link\" href=\"#\">2</a></li>
+                        <li class=\"page-item\">
+                            <a class=\"page-link\" href=\"#\">Siguiente</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        `;
     }
 
     initEvents() {

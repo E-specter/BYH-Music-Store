@@ -186,35 +186,38 @@ class App {
                     </div>
                 `;
                 
-                // Renderizar la vista
+                // 1. Renderizar la estructura inicial de la vista
                 contentArea.innerHTML = view.render ? view.render() : '';
-                
-                // Inicializar eventos de la vista
-                if (view.initEvents) {
-                    view.initEvents();
-                }
-                
-                // Cargar datos de la vista si es necesario
-                if (view.loadData) {
-                    try {
-                        await view.loadData();
-                    } catch (error) {
-                        console.error(`Error al cargar datos de la vista ${viewName}:`, error);
+
+                // Usamos setTimeout para asegurar que el DOM se actualice antes de manipularlo
+                setTimeout(async () => {
+                    // 2. Cargar datos y actualizar la vista, pasando el scope del DOM
+                    if (view.loadData) {
+                        try {
+                            await view.loadData(contentArea);
+                        } catch (error) {
+                            console.error(`Error al cargar datos de la vista ${viewName}:`, error);
+                        }
                     }
-                }
-                
+
+                    // 3. Inicializar eventos de la vista, pasando el scope del DOM
+                    if (view.initEvents) {
+                        view.initEvents(contentArea);
+                    }
+                }, 0);
+
                 // Actualizar la URL del navegador sin recargar la página
                 window.history.pushState({ view: viewName }, '', `#${viewName}`);
-                
+
                 // Actualizar la vista actual
                 this.currentView = viewName;
-                
+
                 // Actualizar el menú activo
                 this.updateActiveMenu();
-                
+
                 // Actualizar el título de la página
                 document.title = `${viewName.charAt(0).toUpperCase() + viewName.slice(1)} | Panel de Administración`;
-                
+
                 // Desplazarse al principio de la página
                 window.scrollTo(0, 0);
             }
@@ -277,27 +280,6 @@ class App {
                 }
             }
         }
-    }
-}
-
-// Crear una instancia global de la aplicación
-window.app = new App();
-
-// Exportar tanto la clase como la instancia
-export { App };
-export default window.app;
-
-// Aplicación principal del panel de administración
-// Importaciones relativas
-import { Navigation } from './components/Navigation.js';
-import { showNotification } from './utils/helpers.js';
-import { DashboardView } from './views/DashboardView.js';
-
-class App {
-    constructor() {
-        this.views = {};
-        this.currentView = null;
-        this.init();
     }
 
     /**
@@ -505,7 +487,5 @@ class App {
 
 // Crear una instancia global de la aplicación
 window.app = new App();
-
-// Exportar tanto la clase como la instancia
 export { App };
 export default window.app;
