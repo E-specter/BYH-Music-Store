@@ -1,22 +1,25 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalle del Producto</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/style-tienda.css">
-    <link rel="stylesheet" href="../css/style-detalles-producto.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="../js/load-components.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Detalle del Producto</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style-tienda.css">
+  <link rel="stylesheet" href="../css/style-detalles-producto.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <script src="../js/load-components.js" defer></script>
+  <script src="../js/main.js"></script>
 </head>
+
 <body>
   <div class="product-emergente active">
     <div class="product-content">
       <button class="close-emergente" title="Cerrar">
         <i class="fas fa-times"></i>
       </button>
-      
+
       <div class="product-grid">
         <div class="product-image-section">
           <div class="product-image-container">
@@ -26,7 +29,7 @@
             <i class="fas fa-heart"></i>
           </button>
         </div>
-        
+
         <div class="product-details">
           <h2 class="product-title">Parche - Metallica Master of Puppets</h2>
           <div class="product-meta">
@@ -40,11 +43,12 @@
               <span>(4.5/5)</span>
             </div>
           </div>
-          
+
           <div class="product-description">
-            <p>Parche oficial de Metallica del álbum Master of Puppets. Material de alta calidad, resistente al lavado. Tamaño: 10cm x 10cm.</p>
+            <p>Parche oficial de Metallica del álbum Master of Puppets. Material de alta calidad, resistente al lavado.
+              Tamaño: 10cm x 10cm.</p>
           </div>
-          
+
           <div class="product-options">
             <div class="quantity-selector">
               <label for="quantity">Cantidad:</label>
@@ -54,7 +58,7 @@
                 <button class="quantity-btn" onclick="updateQuantity(1)">+</button>
               </div>
             </div>
-            
+
             <div class="size-selector">
               <label for="size">Tamaño:</label>
               <select id="size">
@@ -64,7 +68,7 @@
               </select>
             </div>
           </div>
-          
+
           <div class="product-actions">
             <button class="btn-primary" id="addToCart">
               <i class="fas fa-shopping-cart"></i>
@@ -75,7 +79,7 @@
               Comprar ahora
             </button>
           </div>
-          
+
           <div class="product-info">
             <div class="info-item">
               <i class="fas fa-truck"></i>
@@ -91,39 +95,36 @@
     </div>
   </div>
 
-  <!-- Scripts principales -->
-  <script src="../js/main.js"></script>
-  
   <script>
     // Cargar datos del producto desde sessionStorage
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       const productData = JSON.parse(sessionStorage.getItem('currentProduct') || '{}');
-      
+
       // Si no hay datos del producto, redirigir a la tienda
       if (!productData.id) {
         window.location.href = 'tienda.html';
         return;
       }
-      
+
       // Actualizar la página con los datos del producto
       document.querySelector('.product-title').textContent = productData.name;
-      document.querySelector('.product-price').textContent = `S/. ${productData.price}`;
+      document.querySelector('.product-price').textContent = `S/. ${ productData.price }`;
       document.querySelector('.product-image').src = productData.image;
-      
+
       // Manejar clic en Agregar al carrito
-      document.getElementById('addToCart').addEventListener('click', function() {
+      document.getElementById('addToCart').addEventListener('click', function () {
         // Aquí podrías agregar el producto al carrito
         // Por ahora, solo redirigimos de vuelta a la tienda
         window.location.href = 'tienda.html';
       });
-      
+
       // Manejar clic en Comprar ahora
-      document.getElementById('buyNow').addEventListener('click', function() {
+      document.getElementById('buyNow').addEventListener('click', function () {
         // Redirigir a la página de detalles de compra
         window.location.href = 'detalles-compra.html';
       });
     });
-    
+
     function updateQuantity(change) {
       const quantityInput = document.getElementById('quantity');
       let newValue = parseInt(quantityInput.value) + change;
@@ -132,20 +133,17 @@
       }
     }
 
-    document.querySelector('.close-emergente').addEventListener('click', function() {
+    document.querySelector('.close-emergente').addEventListener('click', function () {
       window.location.href = 'tienda.html';
     });
-    
+
     // Cerrar con la tecla Escape
-    document.addEventListener('keydown', function(e) {
+    document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') {
         window.location.href = 'tienda.html';
       }
     });
   </script>
-  
-  <!-- Scripts principales -->
-  <script src="../js/main.js"></script>
-  <script src="../js/load-components.js"></script>
 </body>
+
 </html>

@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "# pedido": "000001",
+    "cliente": "Ana Lopez",
+    "fecha": "22/12/2022",
+    "total": 250.00,
+    "estado": "pendiente",
+    "acciones": [
+      {"nombre": "Ver", "enlace": "#"},
+      {"nombre": "Editar", "enlace": "#"},
+      {"nombre": "Eliminar", "enlace": "#"}
+    ]
+  },
+  {
+    "id": 2,
+    "# pedido": "000002",
+    "cliente": "Carlos Ruiz",
+    "fecha": "22/12/2022",
+    "total": 250.00,
+    "estado": "pendiente",
+    "acciones": [
+      {"nombre": "Ver", "enlace": "#"},
+      {"nombre": "Editar", "enlace": "#"},
+      {"nombre": "Eliminar", "enlace": "#"}
+    ]
+  }
+]

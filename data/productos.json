@@ -1,0 +1,29 @@
+[
+  {
+    "id": 1,
+    "nombre": "Parche de Metallica",
+    "descripcion": "Parche de Metallica",
+    "precio": 100,
+    "stock": 10,
+    "categoria": "Parches",
+    "imagen": "metallica.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Parche de Guns n' Roses",
+    "descripcion": "Parche de Guns n' Roses",
+    "precio": 200,
+    "stock": 5,
+    "categoria": "Parches",
+    "imagen": "guns.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Parche de Kizzad",
+    "descripcion": "Parche de Kizzad",
+    "precio": 300,
+    "stock": 3,
+    "categoria": "Parches",
+    "imagen": "kizzad.jpg"
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "nombre": "Ana López",
+    "correo": "ana@metalmusicstore.com",
+    "contrasenia": "Ana123456",
+    "rol": "admin"
+  },
+  {
+    "id": 2,
+    "nombre": "Carlos Ruiz",
+    "correo": "carlos@public.com",
+    "contrasenia": "Carlos789",
+    "rol": "user"
+  },
+  {
+    "id": 3,
+    "nombre": "Marta García",
+    "correo": "marta@metalmusicstore.com",
+    "contrasenia": "Marta2024",
+    "rol": "admin"
+  },
+  {
+    "id": 4,
+    "nombre": "Luis Ramírez",
+    "correo": "luis@public.com",
+    "contrasenia": "Luis123",
+    "rol": "user"
+  },
+  {
+    "id": 5,
+    "nombre": "Pedro Ramirez",
+    "correo": "pedro@metalmusicstore.com",
+    "contrasenia": "Pedro123",
+    "rol": "admin"
+  },
+  {
+    "id": 6,
+    "nombre": "Juan Ramirez",
+    "correo": "juan@public.com",
+    "contrasenia": "Juan123",
+    "rol": "user"
+  }
+]

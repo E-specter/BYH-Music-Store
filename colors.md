@@ -1,3 +1,6 @@
+# Variables de colores
+
+
 # Primera paleta de colores
 #FFFFFF
 #000000
@@ -18,3 +21,11 @@ Botón desplegable de Compra (icono de tienda)
 - Botón de carrito de compra (icono de carrito)
 - Botón de lista de pedidos (icono de bolsa de tiendas)
 
+
+
+# Colores de formularios
+Color-texto-énfasis: #f00000;
+Color-texto-label: rgba(255, 255, 255, 0.2);
+Color-fondo: #12161d;
+Color-borde: rgba(255, 255, 255, 0.1);
+Sobra-
